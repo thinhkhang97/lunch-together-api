@@ -18,10 +18,16 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@shared/shared": [
+      "@app/kernel": [
+        "libs/kernel/src"
+      ],
+      "@app/kernel/*": [
+        "libs/kernel/src/*"
+      ],
+      "@app/shared": [
         "libs/shared/src"
       ],
-      "@shared/shared/*": [
+      "@app/shared/*": [
         "libs/shared/src/*"
       ]
     }
