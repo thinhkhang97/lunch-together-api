@@ -2,7 +2,7 @@
   "extends": "../../../tsconfig.json",
   "compilerOptions": {
     "declaration": true,
-    "outDir": "../../../dist/libs/user/application"
+    "outDir": "../../../dist/libs/user/domain"
   },
   "include": [
     "src/**/*"

@@ -6,12 +6,24 @@ interface BaseEntityProps {
   version: number;
 }
 
-export abstract class BaseEntity<T extends BaseEntityProps> {
-  protected readonly _id: ID;
-  protected _props: T;
+interface CreateEntityProps {
+  updatedAt?: DateVO;
+  createdAt?: DateVO;
+  version?: number;
+}
 
-  constructor(props: T, id?: ID) {
-    this._props = props;
+export abstract class BaseEntity<T> {
+  protected readonly _id: ID;
+  protected _props: T & BaseEntityProps;
+
+  constructor(props: T & CreateEntityProps, id?: ID) {
+    const now = DateVO.now();
+    this._props = {
+      ...props,
+      version: props.version || 0,
+      createdAt: props.createdAt || now,
+      updatedAt: props.updatedAt || now,
+    };
     this._id = id ? id : CUID.generate();
   }
 

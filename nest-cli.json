@@ -45,6 +45,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/user/application/tsconfig.lib.json"
       }
+    },
+    "domain": {
+      "type": "library",
+      "root": "libs/user/domain",
+      "entryFile": "index",
+      "sourceRoot": "libs/user/domain/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/user/domain/tsconfig.lib.json"
+      }
     }
   }
 }
