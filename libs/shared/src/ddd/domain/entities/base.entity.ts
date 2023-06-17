@@ -1,6 +1,6 @@
 import { CUID, DateVO, ID } from '@lib/shared';
 
-interface BaseEntityProps {
+export interface BaseEntityProps {
   updatedAt: DateVO;
   createdAt: DateVO;
   version: number;
