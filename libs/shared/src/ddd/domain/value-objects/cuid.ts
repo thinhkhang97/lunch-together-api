@@ -10,7 +10,6 @@ export class CUID extends ID {
   }
 
   protected validate(props: ValueObjectProps<string>): void {
-    // TODO: handle base error
     if (!cuid.isCuid(props.value)) {
       throw new InvalidValueFormatException('Invalid CUID format');
     }
