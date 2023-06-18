@@ -6,9 +6,11 @@ import {
   ID,
 } from '@lib/shared';
 
-type QueryParams<EntityProps> = DeepPartial<EntityProps & BaseEntityProps>;
+export type QueryParams<EntityProps> = DeepPartial<
+  EntityProps & BaseEntityProps
+>;
 
-export abstract class BaseRepository<
+export abstract class BaseRepositoryPort<
   Entity extends BaseEntity<unknown>,
   EntityProps,
 > {
@@ -20,4 +22,8 @@ export abstract class BaseRepository<
   ): Promise<Entity>;
 
   public abstract findOne(props: QueryParams<EntityProps>): Promise<Entity>;
+
+  public abstract findMany(
+    props: QueryParams<EntityProps>,
+  ): Promise<Array<Entity>>;
 }
