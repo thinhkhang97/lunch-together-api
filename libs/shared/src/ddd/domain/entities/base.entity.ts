@@ -49,6 +49,16 @@ export abstract class BaseEntity<T> {
 
   public abstract valiate();
 
+  public getProps(): BaseEntityProps {
+    const propsCopy = {
+      id: this._id,
+      createdAt: this.createdAt,
+      updatedAt: this.updatedAt,
+      ...this._props,
+    };
+    return Object.freeze(propsCopy);
+  }
+
   public equals(entity?: BaseEntity<T>) {
     if (entity === null || entity === undefined) {
       return false;
