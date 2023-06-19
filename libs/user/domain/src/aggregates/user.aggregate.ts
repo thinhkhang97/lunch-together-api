@@ -8,10 +8,22 @@ interface CreateUserProps {
   password: Password;
 }
 
-type UserProps = CreateUserProps;
+export type UserProps = CreateUserProps;
 
 export class User extends BaseEntity<UserProps> {
   get email() {
     return this._props.email;
+  }
+
+  get name() {
+    return this._props.name;
+  }
+
+  get password() {
+    return this._props.password;
+  }
+
+  valiate() {
+    return;
   }
 }

@@ -1,6 +1,7 @@
 import { CUID, DateVO, ID } from '@lib/shared';
 
 export interface BaseEntityProps {
+  id: ID;
   updatedAt: DateVO;
   createdAt: DateVO;
   version: number;
@@ -20,6 +21,7 @@ export abstract class BaseEntity<T> {
     const now = DateVO.now();
     this._props = {
       ...props,
+      id,
       version: props.version || 0,
       createdAt: props.createdAt || now,
       updatedAt: props.updatedAt || now,

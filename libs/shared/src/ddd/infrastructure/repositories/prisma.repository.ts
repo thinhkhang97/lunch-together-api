@@ -17,7 +17,7 @@ export abstract class PrismaRepository<
 {
   constructor(
     private readonly _delegate: Delegate,
-    private readonly _ormMapper: BaseOrmMapper<Entity, OrmEntity>,
+    private readonly _ormMapper: BaseOrmMapper<Entity, EntityProps, OrmEntity>,
   ) {}
 
   public abstract getWhereCondition(
