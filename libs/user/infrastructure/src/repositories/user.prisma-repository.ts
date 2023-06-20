@@ -1,10 +1,6 @@
-import {
-  BaseOrmMapper,
-  PrismaRepository,
-  PrismaService,
-  QueryParams,
-} from '@lib/shared';
+import { PrismaRepository, PrismaService, QueryParams } from '@lib/shared';
 import { User, UserProps } from '@lib/user/domain';
+import { UserOrmMapper } from '@lib/user/infrastructure/orm-mappers';
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 
@@ -19,7 +15,7 @@ export class UserPrismaRepository extends PrismaRepository<
 > {
   constructor(
     private readonly _prismaService: PrismaService,
-    _ormMapper: BaseOrmMapper<User, UserProps, UserOrmEntity>,
+    _ormMapper: UserOrmMapper,
   ) {
     super(_prismaService.user, _ormMapper);
   }

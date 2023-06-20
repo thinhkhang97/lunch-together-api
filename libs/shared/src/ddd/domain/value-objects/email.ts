@@ -1,5 +1,6 @@
 import { InvalidValueFormatException } from '@lib/shared';
-import { ValueObject, ValueObjectProps } from '@lib/shared/ddd';
+
+import { ValueObject, ValueObjectProps } from './value-object';
 
 export class Email extends ValueObject<string> {
   private static readonly EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

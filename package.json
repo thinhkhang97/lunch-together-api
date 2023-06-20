@@ -83,7 +83,10 @@
       "<rootDir>/libs/"
     ],
     "moduleNameMapper": {
-      "^@lib/shared(|/.*)$": "<rootDir>/libs/shared/src/$1"
+      "^@lib/shared(|/.*)$": "<rootDir>/libs/shared/src/$1",
+      "^@lib/user/application(|/.*)$": "<rootDir>/libs/user/application/src/$1",
+      "^@lib/user/domain(|/.*)$": "<rootDir>/libs/user/domain/src/$1",
+      "^@lib/user/infrastructure(|/.*)$": "<rootDir>/libs/user/infrastructure/src/$1"
     }
   }
 }

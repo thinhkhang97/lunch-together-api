@@ -1,4 +1,4 @@
-import { ValueObject } from '@lib/shared';
+import { ValueObject } from './value-object';
 
 export class DateVO extends ValueObject<Date> {
   constructor(date: Date) {

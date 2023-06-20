@@ -1,4 +1,4 @@
-import { BaseException } from '@lib/shared';
+import { BaseException } from '@lib/shared/exceptions/base.exception';
 
 export class UserNotFoundException extends BaseException {
   constructor() {

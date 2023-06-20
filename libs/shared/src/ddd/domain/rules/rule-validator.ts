@@ -1,5 +1,6 @@
-import { BaseRule } from '@lib/shared/ddd';
 import { RuleViolationException } from '@lib/shared/exceptions';
+
+import { BaseRule } from './base.rule';
 
 export class RuleValidator {
   public static validate(...rules: Array<BaseRule>): void {

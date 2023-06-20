@@ -1,10 +1,11 @@
-import { BaseEntity, BaseException, ID } from '@lib/shared';
+import { BaseEntity, ID } from '@lib/shared';
 import {
   BaseRepositoryPort,
   QueryParams,
 } from '@lib/shared/ddd/domain/repositories';
 import { BaseOrmEntity, BaseOrmMapper } from '@lib/shared/ddd/infrastructure';
 import { PrismaDelegate } from '@lib/shared/ddd/infrastructure/types';
+import { BaseException } from '@lib/shared/exceptions/base.exception';
 
 export type WhereCondition = Record<any, any>;
 
