@@ -16,6 +16,32 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@lib/shared": [
+        "libs/shared/src"
+      ],
+      "@lib/shared/*": [
+        "libs/shared/src/*"
+      ],
+      "@lib/user/application": [
+        "libs/user/application/src"
+      ],
+      "@lib/user/application/*": [
+        "libs/user/application/src/*"
+      ],
+      "@lib/user/domain": [
+        "libs/user/domain/src"
+      ],
+      "@lib/user/domain/*": [
+        "libs/user/domain/src/*"
+      ],
+      "@lib/user/infrastructure": [
+        "libs/user/infrastructure/src"
+      ],
+      "@lib/user/infrastructure/*": [
+        "libs/user/infrastructure/src/*"
+      ]
+    }
   }
 }

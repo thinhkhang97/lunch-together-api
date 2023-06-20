@@ -1,8 +1,68 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src",
+  "sourceRoot": "apps/lunch-together-api/src",
   "compilerOptions": {
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/lunch-together-api/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/lunch-together-api",
+  "projects": {
+    "core": {
+      "type": "application",
+      "root": "apps/core",
+      "entryFile": "main",
+      "sourceRoot": "apps/core/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/core/tsconfig.app.json"
+      }
+    },
+    "shared": {
+      "type": "library",
+      "root": "libs/shared",
+      "entryFile": "index",
+      "sourceRoot": "libs/shared/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/shared/tsconfig.lib.json"
+      }
+    },
+    "user/application": {
+      "type": "library",
+      "root": "libs/user/application",
+      "entryFile": "index",
+      "sourceRoot": "libs/user/application/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/user/application/tsconfig.lib.json"
+      }
+    },
+    "domain": {
+      "type": "library",
+      "root": "libs/user/domain",
+      "entryFile": "index",
+      "sourceRoot": "libs/user/domain/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/user/domain/tsconfig.lib.json"
+      }
+    },
+    "infrastructure": {
+      "type": "library",
+      "root": "libs/user/infrastructure",
+      "entryFile": "index",
+      "sourceRoot": "libs/user/infrastructure/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/user/infrastructure/tsconfig.lib.json"
+      }
+    },
+    "user": {
+      "type": "application",
+      "root": "apps/user",
+      "entryFile": "main",
+      "sourceRoot": "apps/user/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/user/tsconfig.app.json"
+      }
+    }
   }
 }
