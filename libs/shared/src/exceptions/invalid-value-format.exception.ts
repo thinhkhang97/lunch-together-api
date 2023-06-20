@@ -1,6 +1,4 @@
-import { BaseException } from '@lib/shared/exceptions/base.exception';
-
-export class InvalidValueFormatException extends BaseException {
+export class InvalidValueFormatException extends Error {
   constructor(message?: string) {
     super(message);
   }

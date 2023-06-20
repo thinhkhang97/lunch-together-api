@@ -35,6 +35,12 @@
       ],
       "@lib/user/domain/*": [
         "libs/user/domain/src/*"
+      ],
+      "@lib/user/infrastructure": [
+        "libs/user/infrastructure/src"
+      ],
+      "@lib/user/infrastructure/*": [
+        "libs/user/infrastructure/src/*"
       ]
     }
   }

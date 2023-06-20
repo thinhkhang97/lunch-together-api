@@ -1,4 +1,4 @@
-import { queries } from '@lib/user/application';
+import { queries } from '@lib/user/application/queries';
 import { Module } from '@nestjs/common';
 
 @Module({

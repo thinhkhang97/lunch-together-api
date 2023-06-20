@@ -1,2 +1,5 @@
+import { GetUserQueryHandler } from '@lib/user/application/queries/get-user/get-user.query-handler';
+import { Provider } from '@nestjs/common';
+
 export * from './get-user/get-user.query';
-export * from './get-user/get-user.query-handler';
+export const queries: Provider[] = [GetUserQueryHandler];

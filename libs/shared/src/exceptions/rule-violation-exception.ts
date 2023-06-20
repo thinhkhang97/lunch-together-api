@@ -1,3 +1,1 @@
-import { BaseException } from '@lib/shared';
-
-export class RuleViolationException extends BaseException {}
+export class RuleViolationException extends Error {}

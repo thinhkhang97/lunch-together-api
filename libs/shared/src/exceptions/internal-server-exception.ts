@@ -1,6 +1,4 @@
-import { BaseException } from '@lib/shared';
-
-export class InternalServerException extends BaseException {
+export class InternalServerException extends Error {
   constructor(message: string) {
     super('internal_server_exception' + message);
   }
