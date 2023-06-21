@@ -5,13 +5,18 @@ export abstract class BaseOrmMapper<
   EntityProps,
   OrmEntity extends BaseOrmEntity,
 > {
-  entityContructor: new (props: EntityProps, id?: string | ID) => Entity;
+  constructor(
+    private readonly entityConstructor: new (
+      props: EntityProps,
+      id?: string | ID,
+    ) => Entity,
+  ) {}
 
   public toEntity(ormEntity: OrmEntity): Entity {
     const props = {
       ...this.toEntityProps(ormEntity),
     };
-    return new this.entityContructor(props, ormEntity.id);
+    return new this.entityConstructor(props, ormEntity.id);
   }
 
   public toOrm(entity: Entity): OrmEntity {

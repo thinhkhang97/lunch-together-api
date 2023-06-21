@@ -11,6 +11,10 @@ export class UserOrmMapper extends BaseOrmMapper<
   UserProps,
   UserOrmEntity
 > {
+  constructor() {
+    super(User);
+  }
+
   protected toEntityProps(ormEntity: UserOrmEntity): UserProps {
     return {
       email: new Email(ormEntity.email),
