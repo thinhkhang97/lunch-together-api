@@ -10,4 +10,5 @@ Rel(personAlias, applicationAlias, "Uses", "View , make a meal with others")
 Rel(applicationAlias, ltSystemAlias, "HTTPs", "GraphQL query, mutation, subscription")
 Rel(notificationSystemAlias, applicationAlias, "HTTPs", "Push notification")
 Rel(notificationSystemAlias, personAlias, "HTTPs", "Email, SMS")
+Rel(ltSystemAlias, notificationSystemAlias, "HTTPs", "", "" )
 @enduml
