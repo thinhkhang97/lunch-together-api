@@ -51,12 +51,13 @@ export abstract class BaseEntity<T> {
 
   public abstract valiate();
 
-  public getProps(): BaseEntityProps {
+  public getProps(): T & BaseEntityProps {
     const propsCopy = {
+      ...this._props,
       id: this._id,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
-      ...this._props,
+      version: this.version,
     };
     return Object.freeze(propsCopy);
   }

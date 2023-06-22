@@ -41,6 +41,12 @@
       ],
       "@lib/user/infrastructure/*": [
         "libs/user/infrastructure/src/*"
+      ],
+      "@lib/user/graphql-ui": [
+        "libs/user/graphql-ui/src"
+      ],
+      "@lib/user/graphql-ui/*": [
+        "libs/user/graphql-ui/src/*"
       ]
     }
   }
