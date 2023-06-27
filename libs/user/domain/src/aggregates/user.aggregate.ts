@@ -1,4 +1,4 @@
-import { BaseEntity, Email } from '@lib/shared';
+import { AggregateRoot, Email } from '@lib/shared';
 import { Username } from '@lib/user/domain/value-objects';
 import { Password } from '@lib/user/domain/value-objects/password';
 
@@ -10,7 +10,7 @@ interface CreateUserProps {
 
 export type UserProps = CreateUserProps;
 
-export class User extends BaseEntity<UserProps> {
+export class User extends AggregateRoot<UserProps> {
   get email() {
     return this._props.email;
   }
