@@ -1,16 +1,21 @@
-import { ValueObject, ValueObjectProps } from '@lib/shared';
-import { InvalidUsernameFormatException } from '@lib/user/domain/exceptions';
+import { BCrypt } from '@lib/shared';
+import { ValueObject, ValueObjectProps } from '@lib/shared/ddd/domain';
 
 export class Password extends ValueObject<string> {
-  private static readonly MIN_LENGTH = 6;
-
   constructor(value: string) {
     super({ value });
   }
 
+  public static async create(value: string) {
+    const hashedPassword = await BCrypt.hash(value);
+    return new Password(hashedPassword);
+  }
+
+  public async compare(password: string | Buffer): Promise<boolean> {
+    return BCrypt.compare(password, this.value);
+  }
+
   protected validate(props: ValueObjectProps<string>): void {
-    if (props.value.length < Password.MIN_LENGTH) {
-      throw new InvalidUsernameFormatException();
-    }
+    return;
   }
 }

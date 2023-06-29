@@ -1,4 +1,4 @@
-import { UserRepository } from '@lib/user/domain';
+import { UserRepository } from '@lib/user/domain/repositories';
 import { Provider } from '@nestjs/common';
 
 import { UserPrismaRepository } from './user.prisma-repository';

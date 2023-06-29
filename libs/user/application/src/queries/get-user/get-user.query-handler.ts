@@ -1,7 +1,11 @@
-import { BaseQueryHandler, CUID } from '@lib/shared';
-import { GetUserQuery } from '@lib/user/application/queries/get-user/get-user.query';
-import { User, UserNotFoundException, UserRepository } from '@lib/user/domain';
+import { BaseQueryHandler } from '@lib/shared/ddd/applications';
+import { CUID } from '@lib/shared/ddd/domain';
+import { User } from '@lib/user/domain/aggregates';
+import { UserNotFoundException } from '@lib/user/domain/exceptions';
+import { UserRepository } from '@lib/user/domain/repositories';
 import { QueryHandler } from '@nestjs/cqrs';
+
+import { GetUserQuery } from './get-user.query';
 
 @QueryHandler(GetUserQuery)
 export class GetUserQueryHandler extends BaseQueryHandler<GetUserQuery, User> {

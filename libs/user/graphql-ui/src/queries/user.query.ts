@@ -1,17 +1,18 @@
 import { Either } from '@lib/shared';
-import { GetUserQuery } from '@lib/user/application/queries';
-import { User } from '@lib/user/domain';
-import { UserObject } from '@lib/user/graphql-ui/objects/user.object';
+import { GetUserQuery } from '@lib/user/application';
+import { User } from '@lib/user/domain/aggregates';
 import { QueryBus } from '@nestjs/cqrs';
 import { Args, Query, Resolver } from '@nestjs/graphql';
+
+import { UserObject } from '../objects/user.object';
 
 @Resolver()
 export class UserQuery {
   constructor(public readonly _queryBus: QueryBus) {}
 
-  @Query(() => String, { name: 'helloworld' })
-  public getHelloWorld() {
-    return 'hello world';
+  @Query(() => String, { name: 'test' })
+  public test() {
+    return 'HELLO WORLD';
   }
 
   @Query(() => UserObject, { name: 'user' })

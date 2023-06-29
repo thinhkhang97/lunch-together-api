@@ -1,5 +1,6 @@
-import { ValueObject, ValueObjectProps } from '@lib/shared';
-import { InvalidUsernameFormatException } from '@lib/user/domain/exceptions';
+import { ValueObject, ValueObjectProps } from '@lib/shared/ddd/domain';
+
+import { InvalidUsernameFormatException } from '../exceptions';
 
 export class Username extends ValueObject<string> {
   private static readonly MIN_LENGTH = 3;

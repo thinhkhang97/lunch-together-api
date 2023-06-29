@@ -1,5 +1,7 @@
-import { PrismaRepository, PrismaService, QueryParams } from '@lib/shared';
-import { User, UserProps } from '@lib/user/domain';
+import { QueryParams } from '@lib/shared/ddd/domain';
+import { PrismaRepository } from '@lib/shared/ddd/infrastructure';
+import { PrismaService } from '@lib/shared/services';
+import { User, UserProps } from '@lib/user/domain/aggregates';
 import { UserOrmMapper } from '@lib/user/infrastructure/orm-mappers';
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';

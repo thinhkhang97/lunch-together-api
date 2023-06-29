@@ -1,5 +1,6 @@
-import { BaseRepositoryPort } from '@lib/shared';
-import { User, UserProps } from '@lib/user/domain';
+import { BaseRepositoryPort } from '@lib/shared/ddd/domain';
+
+import { User, UserProps } from '../aggregates';
 
 export abstract class UserRepository extends BaseRepositoryPort<
   User,

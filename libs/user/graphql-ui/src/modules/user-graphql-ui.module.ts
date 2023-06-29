@@ -1,11 +1,14 @@
 import { UserApplicationModule } from '@lib/user/application';
-import { UserQuery } from '@lib/user/graphql-ui/queries';
 import { ApolloDriver } from '@nestjs/apollo';
 import { Module, Provider } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import { GraphQLModule } from '@nestjs/graphql';
 
+import { Register } from '../mutations';
+import { UserQuery } from '../queries';
+
 const queries: Provider[] = [UserQuery];
+const mutations: Provider[] = [Register];
 
 @Module({
   imports: [
@@ -16,7 +19,7 @@ const queries: Provider[] = [UserQuery];
       autoSchemaFile: true,
     }),
   ],
-  providers: [...queries],
-  exports: [...queries],
+  providers: [...queries, ...mutations],
+  exports: [...queries, ...mutations],
 })
 export class UserGraphqlUiModule {}

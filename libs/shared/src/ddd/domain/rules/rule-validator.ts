@@ -1,5 +1,4 @@
-import { RuleViolationException } from '@lib/shared/exceptions';
-
+import { RuleViolationException } from '../../../exceptions';
 import { BaseRule } from './base.rule';
 
 export class RuleValidator {

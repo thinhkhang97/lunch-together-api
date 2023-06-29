@@ -1,5 +1,4 @@
-import { InvalidValueFormatException } from '@lib/shared';
-
+import { InvalidValueFormatException } from '../../../exceptions';
 import { ValueObject, ValueObjectProps } from './value-object';
 
 export class Email extends ValueObject<string> {

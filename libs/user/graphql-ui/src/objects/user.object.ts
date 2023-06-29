@@ -1,9 +1,9 @@
-import { User } from '@lib/user/domain';
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { User } from '@lib/user/domain/aggregates';
+import { Field, ObjectType } from '@nestjs/graphql';
 
 @ObjectType('User')
 export class UserObject {
-  @Field(() => ID)
+  @Field(() => String)
   public readonly id: string;
 
   @Field(() => String)

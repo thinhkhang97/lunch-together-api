@@ -1,6 +1,7 @@
-import { BaseOrmMapper, Email } from '@lib/shared';
-import { User, Username, UserProps } from '@lib/user/domain';
-import { Password } from '@lib/user/domain/value-objects/password';
+import { Email } from '@lib/shared/ddd/domain';
+import { BaseOrmMapper } from '@lib/shared/ddd/infrastructure';
+import { User, UserProps } from '@lib/user/domain/aggregates';
+import { Password, Username } from '@lib/user/domain/value-objects';
 import { Injectable } from '@nestjs/common';
 
 import { UserOrmEntity } from '../orm-entities';

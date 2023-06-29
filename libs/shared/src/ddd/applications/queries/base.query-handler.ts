@@ -1,9 +1,6 @@
-import {
-  BaseException,
-  BaseQuery,
-  InternalServerException,
-  Result,
-} from '@lib/shared';
+import { Result } from '@lib/shared';
+import { BaseQuery } from '@lib/shared/ddd/applications';
+import { BaseException, InternalServerException } from '@lib/shared/exceptions';
 import { IQueryHandler } from '@nestjs/cqrs';
 import { Err, Ok } from 'oxide.ts';
 

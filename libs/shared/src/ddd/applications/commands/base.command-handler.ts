@@ -1,4 +1,4 @@
-import { BaseException, InternalServerException } from '@lib/shared';
+import { BaseException, InternalServerException } from '@lib/shared/exceptions';
 import { ICommandHandler } from '@nestjs/cqrs';
 import { Err, Ok, Result } from 'oxide.ts';
 

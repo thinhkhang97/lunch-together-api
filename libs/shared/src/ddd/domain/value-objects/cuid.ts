@@ -1,7 +1,7 @@
-import { ValueObjectProps } from '@lib/shared/ddd';
-import { InvalidValueFormatException } from '@lib/shared/exceptions';
 import cuid from 'cuid';
 
+import { InvalidValueFormatException } from '../../../exceptions';
+import { ValueObjectProps } from '../value-objects';
 import { ID } from './id';
 
 export class CUID extends ID {

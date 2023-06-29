@@ -1,16 +1,15 @@
-import { AggregateRoot, Email } from '@lib/shared';
-import { Username } from '@lib/user/domain/value-objects';
-import { Password } from '@lib/user/domain/value-objects/password';
+import { Nullable } from '@lib/shared';
+import { BaseEntity, Email } from '@lib/shared/ddd/domain';
 
-interface CreateUserProps {
+import { Password, Username } from '../value-objects';
+
+export type UserProps = {
+  name: Nullable<Username>;
   email: Email;
-  name: Username;
   password: Password;
-}
+};
 
-export type UserProps = CreateUserProps;
-
-export class User extends AggregateRoot<UserProps> {
+export class User extends BaseEntity<UserProps> {
   get email() {
     return this._props.email;
   }
@@ -21,6 +20,10 @@ export class User extends AggregateRoot<UserProps> {
 
   get password() {
     return this._props.password;
+  }
+
+  public static create(email: Email, password: Password) {
+    return new User({ email, password, name: null });
   }
 
   valiate() {

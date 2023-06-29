@@ -1,4 +1,3 @@
-import { BaseEntity, ID } from '@lib/shared';
 import {
   BaseRepositoryPort,
   QueryParams,
@@ -6,6 +5,8 @@ import {
 import { BaseOrmEntity, BaseOrmMapper } from '@lib/shared/ddd/infrastructure';
 import { PrismaDelegate } from '@lib/shared/ddd/infrastructure/types';
 import { BaseException } from '@lib/shared/exceptions/base.exception';
+
+import { BaseEntity, ID } from '../../domain';
 
 export type WhereCondition = Record<any, any>;
 
@@ -38,6 +39,19 @@ export abstract class PrismaRepository<
     const result = (await this._delegate.findUnique({
       where: this.getWhereCondition(props),
     })) as OrmEntity;
+    return this._ormMapper.toEntity(result);
+  }
+
+  public async findOneOrThrow(
+    props: QueryParams<EntityProps>,
+    exception: BaseException,
+  ): Promise<Entity> {
+    const result = (await this._delegate.findFirst({
+      where: this.getWhereCondition(props),
+    })) as OrmEntity;
+    if (!result) {
+      throw exception;
+    }
     return this._ormMapper.toEntity(result);
   }
 

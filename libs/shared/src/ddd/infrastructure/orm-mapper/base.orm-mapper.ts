@@ -1,11 +1,5 @@
-import {
-  BaseEntity,
-  BaseEntityProps,
-  BaseOrmEntity,
-  CUID,
-  DateVO,
-  ID,
-} from '@lib/shared';
+import { BaseEntity, BaseEntityProps, CUID, DateVO, ID } from '../../domain';
+import { BaseOrmEntity } from './base.orm-entity';
 
 export abstract class BaseOrmMapper<
   Entity extends BaseEntity<unknown>,

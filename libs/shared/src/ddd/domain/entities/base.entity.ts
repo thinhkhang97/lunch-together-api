@@ -1,4 +1,4 @@
-import { CUID, DateVO, ID } from '@lib/shared';
+import { CUID, DateVO, ID } from '../value-objects';
 
 export interface BaseEntityProps {
   id: ID;
