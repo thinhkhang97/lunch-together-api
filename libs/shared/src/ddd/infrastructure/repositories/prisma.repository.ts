@@ -1,4 +1,4 @@
-import { BaseEntity, ID } from '@lib/shared';
+import { BaseEntity, ID, Nullable } from '@lib/shared';
 import {
   BaseRepositoryPort,
   QueryParams,
@@ -34,11 +34,13 @@ export abstract class PrismaRepository<
     return result.map((r) => this._ormMapper.toEntity(r));
   }
 
-  public async findOne(props: QueryParams<EntityProps>): Promise<Entity> {
+  public async findOne(
+    props: QueryParams<EntityProps>,
+  ): Promise<Nullable<Entity>> {
     const result = (await this._delegate.findUnique({
       where: this.getWhereCondition(props),
     })) as OrmEntity;
-    return this._ormMapper.toEntity(result);
+    return result ? this._ormMapper.toEntity(result) : null;
   }
 
   public async findOneByIdOrThrow(
@@ -58,7 +60,7 @@ export abstract class PrismaRepository<
   public preSave(entity: Entity) {
     const ormProps = this._ormMapper.toOrm(entity);
     return {
-      where: { id: entity.id },
+      where: { id: ormProps.id },
       create: { ...ormProps },
       update: { ...ormProps, version: ormProps.version + 1 },
     };
@@ -66,7 +68,7 @@ export abstract class PrismaRepository<
 
   public async save(entity: Entity): Promise<Entity> {
     entity.valiate();
-    const ormEntity = (await this._delegate.create(
+    const ormEntity = (await this._delegate.upsert(
       this.preSave(entity),
     )) as OrmEntity;
     return this._ormMapper.toEntity(ormEntity);

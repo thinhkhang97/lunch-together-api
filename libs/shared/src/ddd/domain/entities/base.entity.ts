@@ -19,14 +19,15 @@ export abstract class BaseEntity<T> {
 
   constructor(props: T & CreateEntityProps, id?: ID) {
     const now = DateVO.now();
+    const generatedId = id ? id : CUID.generate();
+    this._id = generatedId;
     this._props = {
       ...props,
-      id,
+      id: generatedId,
       version: props.version || 0,
       createdAt: props.createdAt || now,
       updatedAt: props.updatedAt || now,
     };
-    this._id = id ? id : CUID.generate();
   }
 
   get id() {

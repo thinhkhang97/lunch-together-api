@@ -1,16 +1,16 @@
 import { ValueObjectProps } from '@lib/shared/ddd';
 import { InvalidValueFormatException } from '@lib/shared/exceptions';
-import cuid from 'cuid';
+import { createId, isCuid } from '@paralleldrive/cuid2';
 
 import { ID } from './id';
 
 export class CUID extends ID {
   public static generate() {
-    return new CUID(cuid());
+    return new CUID(createId());
   }
 
   protected validate(props: ValueObjectProps<string>): void {
-    if (!cuid.isCuid(props.value)) {
+    if (!isCuid(props.value)) {
       throw new InvalidValueFormatException('Invalid CUID format');
     }
   }
