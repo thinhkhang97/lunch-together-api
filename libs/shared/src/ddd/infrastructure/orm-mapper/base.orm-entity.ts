@@ -1,4 +1,4 @@
-export class BaseOrmEntity {
+export interface BaseOrmEntity {
   id: string;
   createdAt: Date;
   updatedAt: Date;

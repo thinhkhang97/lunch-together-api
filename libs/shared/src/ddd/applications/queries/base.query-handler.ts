@@ -20,7 +20,7 @@ export abstract class BaseQueryHandler<Query extends BaseQuery, Response>
         return Err(error);
       }
 
-      const errorMessage = error instanceof Error ? error.message : undefined;
+      const errorMessage = error instanceof Error ? error.message : '';
       return Err(new InternalServerException(errorMessage));
     }
   }

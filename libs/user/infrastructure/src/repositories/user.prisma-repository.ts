@@ -11,7 +11,7 @@ export class UserPrismaRepository extends PrismaRepository<
   User,
   UserProps,
   UserOrmEntity,
-  Prisma.UserDelegate<unknown>
+  Prisma.UserDelegate<undefined>
 > {
   constructor(
     private readonly _prismaService: PrismaService,

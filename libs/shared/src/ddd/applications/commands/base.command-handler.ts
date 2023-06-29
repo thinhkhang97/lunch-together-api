@@ -17,7 +17,7 @@ export abstract class BaseCommandHandler<C extends BaseCommand, R>
         return Err(error);
       }
 
-      const errorMessage = error instanceof Error ? error.message : undefined;
+      const errorMessage = error instanceof Error ? error.message : '';
       return Err(new InternalServerException(errorMessage));
     }
   }
