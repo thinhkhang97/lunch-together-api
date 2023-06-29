@@ -4,6 +4,7 @@ import {
   BaseException,
   DeepPartial,
   ID,
+  Nullable,
 } from '@lib/shared';
 
 export type QueryParams<EntityProps> = DeepPartial<
@@ -21,7 +22,9 @@ export abstract class BaseRepositoryPort<
     exception: BaseException,
   ): Promise<Entity>;
 
-  public abstract findOne(props: QueryParams<EntityProps>): Promise<Entity>;
+  public abstract findOne(
+    props: QueryParams<EntityProps>,
+  ): Promise<Nullable<Entity>>;
 
   public abstract findMany(
     props: QueryParams<EntityProps>,

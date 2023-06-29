@@ -1,6 +1,11 @@
-import { BaseException, BaseQuery, InternalServerException } from '@lib/shared';
+import {
+  BaseException,
+  BaseQuery,
+  InternalServerException,
+  Result,
+} from '@lib/shared';
 import { IQueryHandler } from '@nestjs/cqrs';
-import { Err, Ok, Result } from 'oxide.ts';
+import { Err, Ok } from 'oxide.ts';
 
 export abstract class BaseQueryHandler<Query extends BaseQuery, Response>
   implements IQueryHandler
@@ -15,7 +20,7 @@ export abstract class BaseQueryHandler<Query extends BaseQuery, Response>
         return Err(error);
       }
 
-      const errorMessage = error instanceof Error ? error.message : undefined;
+      const errorMessage = error instanceof Error ? error.message : '';
       return Err(new InternalServerException(errorMessage));
     }
   }

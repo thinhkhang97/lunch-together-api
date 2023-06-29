@@ -18,7 +18,7 @@ export class UserOrmMapper extends BaseOrmMapper<
   protected toEntityProps(ormEntity: UserOrmEntity): UserProps {
     return {
       email: new Email(ormEntity.email),
-      name: new Username(ormEntity.name),
+      name: ormEntity.name ? new Username(ormEntity.name) : null,
       password: new Password(ormEntity.password),
     };
   }
@@ -26,7 +26,7 @@ export class UserOrmMapper extends BaseOrmMapper<
   protected toOrmProps(entity: User) {
     return {
       email: entity.email.unpack(),
-      name: entity.name.unpack(),
+      name: entity.name ? entity.name.unpack() : null,
       password: entity.password.unpack(),
     };
   }

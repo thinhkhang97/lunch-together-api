@@ -12,11 +12,13 @@
     "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
-    "strictNullChecks": false,
+    "strictNullChecks": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
+    "strictPropertyInitialization": true,
+    "useUnknownInCatchVariables": true,
     "paths": {
       "@lib/shared": [
         "libs/shared/src"
@@ -41,6 +43,12 @@
       ],
       "@lib/user/infrastructure/*": [
         "libs/user/infrastructure/src/*"
+      ],
+      "@lib/user/graphql-ui": [
+        "libs/user/graphql-ui/src"
+      ],
+      "@lib/user/graphql-ui/*": [
+        "libs/user/graphql-ui/src/*"
       ]
     }
   }

@@ -1,4 +1,11 @@
-import { BaseEntity, BaseOrmEntity, ID } from '@lib/shared';
+import {
+  BaseEntity,
+  BaseEntityProps,
+  BaseOrmEntity,
+  CUID,
+  DateVO,
+  ID,
+} from '@lib/shared';
 
 export abstract class BaseOrmMapper<
   Entity extends BaseEntity<unknown>,
@@ -15,8 +22,9 @@ export abstract class BaseOrmMapper<
   public toEntity(ormEntity: OrmEntity): Entity {
     const props = {
       ...this.toEntityProps(ormEntity),
+      ...this.toBaseEntityProps(ormEntity),
     };
-    return new this.entityConstructor(props, ormEntity.id);
+    return new this.entityConstructor(props, new CUID(ormEntity.id));
   }
 
   public toOrm(entity: Entity): OrmEntity {
@@ -31,6 +39,15 @@ export abstract class BaseOrmMapper<
   protected abstract toOrmProps(
     entity: Entity,
   ): Omit<OrmEntity, keyof BaseOrmEntity>;
+
+  private toBaseEntityProps(ormEntity: OrmEntity): BaseEntityProps {
+    return {
+      id: new CUID(ormEntity.id),
+      createdAt: new DateVO(ormEntity.createdAt),
+      updatedAt: new DateVO(ormEntity.updatedAt),
+      version: ormEntity.version,
+    };
+  }
 
   private toBaseOrmProps(entity: Entity): BaseOrmEntity {
     return {

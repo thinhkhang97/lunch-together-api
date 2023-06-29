@@ -1,4 +1,4 @@
-import { ValueObject, ValueObjectProps } from '@lib/shared';
+import { Bcrypt, ValueObject, ValueObjectProps } from '@lib/shared';
 import { InvalidUsernameFormatException } from '@lib/user/domain/exceptions';
 
 export class Password extends ValueObject<string> {
@@ -6,6 +6,11 @@ export class Password extends ValueObject<string> {
 
   constructor(value: string) {
     super({ value });
+  }
+
+  public static async create(value: string) {
+    const hashedPassword = await Bcrypt.hash(value);
+    return new Password(hashedPassword);
   }
 
   protected validate(props: ValueObjectProps<string>): void {
