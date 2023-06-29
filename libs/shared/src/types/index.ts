@@ -1,2 +1,3 @@
 export * from './deep-partial.type';
-export * from './result';
+export * from './nullable.type';
+export * from './result.type';
