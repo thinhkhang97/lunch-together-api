@@ -7,7 +7,8 @@ export interface ValueObjectProps<T extends SupportedType> {
 export abstract class ValueObject<T extends SupportedType> {
   protected readonly _props: ValueObjectProps<T>;
 
-  constructor(props: ValueObjectProps<T>) {
+  protected constructor(props: ValueObjectProps<T>) {
+    this.validate(props);
     this._props = props;
   }
 
