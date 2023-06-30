@@ -1,5 +1,5 @@
 import { BaseErrorObject } from '@lib/shared';
 import { ObjectType } from '@nestjs/graphql';
 
-@ObjectType()
+@ObjectType('UserNotFound')
 export class UserNotFoundObject extends BaseErrorObject {}
