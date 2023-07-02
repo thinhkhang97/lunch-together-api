@@ -1,7 +1,7 @@
 import { Bcrypt, ValueObject, ValueObjectProps } from '@lib/shared';
 import {
   InvalidPasswordFormatException,
-  LoginInfoIsNotCorrectException,
+  LoginInfoNotCorrectException,
 } from '@lib/user/domain/exceptions';
 
 export class Password extends ValueObject<string> {
@@ -19,7 +19,7 @@ export class Password extends ValueObject<string> {
   public async compareWith(password: Password) {
     const isTheSame = await Bcrypt.compare(password.unpack(), this.value);
     if (!isTheSame) {
-      throw new LoginInfoIsNotCorrectException();
+      throw new LoginInfoNotCorrectException();
     }
   }
 
