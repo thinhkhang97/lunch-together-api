@@ -5,6 +5,8 @@ import { UserObject } from '@lib/user/graphql-ui/objects/user.object';
 import { QueryBus } from '@nestjs/cqrs';
 import { Args, Query, Resolver } from '@nestjs/graphql';
 
+import { UserResult } from '../unions/user-result.union';
+
 @Resolver()
 export class UserQuery {
   constructor(public readonly _queryBus: QueryBus) {}
@@ -14,7 +16,7 @@ export class UserQuery {
     return 'hello world';
   }
 
-  @Query(() => UserObject, { name: 'user' })
+  @Query(() => UserResult, { name: 'user' })
   public async getUserByIdQuery(
     @Args('userId', { type: () => String }) userId: string,
   ) {
