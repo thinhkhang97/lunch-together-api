@@ -1,13 +1,11 @@
 import { UserApplicationModule } from '@lib/user/application';
-import { Register } from '@lib/user/graphql-ui/mutations';
-import { UserQuery } from '@lib/user/graphql-ui/queries';
 import { ApolloDriver } from '@nestjs/apollo';
-import { Module, Provider } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import { GraphQLModule } from '@nestjs/graphql';
 
-const queries: Provider[] = [UserQuery];
-const mutations: Provider[] = [Register];
+import { mutations } from '../mutations';
+import { queries } from '../queries';
 
 @Module({
   imports: [
