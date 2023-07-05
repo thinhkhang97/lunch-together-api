@@ -1,10 +1,7 @@
-import {
-  BaseCommandHandler,
-  Email,
-  InternalServerException,
-} from '@lib/shared';
+import { BaseCommandHandler, Email } from '@lib/shared';
 import { RegisterCommand } from '@lib/user/application/commands/register/register.command';
 import { User, UserRepository } from '@lib/user/domain';
+import { UserExistException } from '@lib/user/domain/exceptions/user-exist.exception';
 import { Password } from '@lib/user/domain/value-objects/password';
 import { CommandHandler } from '@nestjs/cqrs';
 
@@ -23,7 +20,7 @@ export class RegisterCommandHandler extends BaseCommandHandler<
     const existUser = await this._userRepository.findOne({ email });
 
     if (existUser) {
-      throw new InternalServerException('USER EXIST');
+      throw new UserExistException();
     }
 
     const user = User.create(email, password);

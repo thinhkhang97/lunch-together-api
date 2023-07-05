@@ -1,5 +1,8 @@
 import { Bcrypt, ValueObject, ValueObjectProps } from '@lib/shared';
-import { InvalidUsernameFormatException } from '@lib/user/domain/exceptions';
+import {
+  InvalidPasswordFormatException,
+  LoginInfoNotCorrectException,
+} from '@lib/user/domain/exceptions';
 
 export class Password extends ValueObject<string> {
   private static readonly MIN_LENGTH = 6;
@@ -13,9 +16,16 @@ export class Password extends ValueObject<string> {
     return new Password(hashedPassword);
   }
 
+  public async compareWith(password: Password) {
+    const isTheSame = await Bcrypt.compare(password.unpack(), this.value);
+    if (!isTheSame) {
+      throw new LoginInfoNotCorrectException();
+    }
+  }
+
   protected validate(props: ValueObjectProps<string>): void {
     if (props.value.length < Password.MIN_LENGTH) {
-      throw new InvalidUsernameFormatException();
+      throw new InvalidPasswordFormatException();
     }
   }
 }

@@ -1,32 +1,31 @@
 import { Either, Public } from '@lib/shared';
-import { RegisterCommand } from '@lib/user/application/commands';
+import { LoginCommand } from '@lib/user/application/commands';
 import { CommandBus } from '@nestjs/cqrs';
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 
-import { RegisterResultObject } from '../objects/register-result.object';
+import { LoggedInObject } from '../objects/logged-in.object';
 
 @Resolver()
-export class Register {
+export class Login {
   constructor(private readonly _commandBus: CommandBus) {}
 
   @Public()
-  @Mutation(() => RegisterResultObject, { name: 'register' })
-  public async registerUser(
+  @Mutation(() => LoggedInObject)
+  public async login(
     @Args('email', { type: () => String }) email: string,
     @Args('password', { type: () => String }) password: string,
   ) {
     const result = await this._commandBus.execute<
-      RegisterCommand,
-      Either<void>
-    >(new RegisterCommand({ email, password }));
+      LoginCommand,
+      Either<{
+        accessToken: string;
+      }>
+    >(new LoginCommand({ email, password }));
     if (result.isErr()) {
-      return new RegisterResultObject({
+      return new LoggedInObject({
         errorMessage: result.unwrapErr().message,
-        status: 'failed',
       });
     }
-    return new RegisterResultObject({
-      status: 'success',
-    });
+    return new LoggedInObject(result.unwrap());
   }
 }
