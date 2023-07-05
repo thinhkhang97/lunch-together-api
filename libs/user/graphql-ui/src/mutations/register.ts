@@ -1,4 +1,4 @@
-import { Either } from '@lib/shared';
+import { Either, Public } from '@lib/shared';
 import { RegisterCommand } from '@lib/user/application/commands';
 import { CommandBus } from '@nestjs/cqrs';
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
@@ -9,6 +9,7 @@ import { RegisterResultObject } from '../objects/register-result.object';
 export class Register {
   constructor(private readonly _commandBus: CommandBus) {}
 
+  @Public()
   @Mutation(() => RegisterResultObject, { name: 'register' })
   public async registerUser(
     @Args('email', { type: () => String }) email: string,

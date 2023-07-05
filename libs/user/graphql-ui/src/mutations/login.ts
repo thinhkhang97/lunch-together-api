@@ -1,4 +1,4 @@
-import { Either } from '@lib/shared';
+import { Either, Public } from '@lib/shared';
 import { LoginCommand } from '@lib/user/application/commands';
 import { CommandBus } from '@nestjs/cqrs';
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
@@ -9,6 +9,7 @@ import { LoggedInObject } from '../objects/logged-in.object';
 export class Login {
   constructor(private readonly _commandBus: CommandBus) {}
 
+  @Public()
   @Mutation(() => LoggedInObject)
   public async login(
     @Args('email', { type: () => String }) email: string,
