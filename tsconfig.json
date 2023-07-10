@@ -49,6 +49,12 @@
       ],
       "@lib/user/graphql-ui/*": [
         "libs/user/graphql-ui/src/*"
+      ],
+      "lib/notification/domain": [
+        "libs/notification/domain/src"
+      ],
+      "lib/notification/domain/*": [
+        "libs/notification/domain/src/*"
       ]
     }
   }

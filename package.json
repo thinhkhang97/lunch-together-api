@@ -91,7 +91,8 @@
       "^@lib/user/application(|/.*)$": "<rootDir>/libs/user/application/src/$1",
       "^@lib/user/domain(|/.*)$": "<rootDir>/libs/user/domain/src/$1",
       "^@lib/user/infrastructure(|/.*)$": "<rootDir>/libs/user/infrastructure/src/$1",
-      "^@lib/user/graphql-ui(|/.*)$": "<rootDir>/libs/user/graphql-ui/src/$1"
+      "^@lib/user/graphql-ui(|/.*)$": "<rootDir>/libs/user/graphql-ui/src/$1",
+      "^lib/notification/domain(|/.*)$": "<rootDir>/libs/notification/domain/src/$1"
     }
   }
 }
