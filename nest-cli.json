@@ -73,13 +73,13 @@
         "tsConfigPath": "libs/user/graphql-ui/tsconfig.lib.json"
       }
     },
-    "notification/domain": {
+    "group/domain": {
       "type": "library",
-      "root": "libs/notification/domain",
+      "root": "libs/group/domain",
       "entryFile": "index",
-      "sourceRoot": "libs/notification/domain/src",
+      "sourceRoot": "libs/group/domain/src",
       "compilerOptions": {
-        "tsConfigPath": "libs/notification/domain/tsconfig.lib.json"
+        "tsConfigPath": "libs/group/domain/tsconfig.lib.json"
       }
     }
   }

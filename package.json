@@ -19,7 +19,8 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./apps/lunch-together-api/test/jest-e2e.json"
+    "test:e2e": "jest --config ./apps/lunch-together-api/test/jest-e2e.json",
+    "postinstall": "npm run prisma:generate"
   },
   "dependencies": {
     "@apollo/server": "^4.7.4",
@@ -92,7 +93,7 @@
       "^@lib/user/domain(|/.*)$": "<rootDir>/libs/user/domain/src/$1",
       "^@lib/user/infrastructure(|/.*)$": "<rootDir>/libs/user/infrastructure/src/$1",
       "^@lib/user/graphql-ui(|/.*)$": "<rootDir>/libs/user/graphql-ui/src/$1",
-      "^lib/notification/domain(|/.*)$": "<rootDir>/libs/notification/domain/src/$1"
+      "^@lib/group/domain(|/.*)$": "<rootDir>/libs/group/domain/src/$1"
     }
   }
 }
