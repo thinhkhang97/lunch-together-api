@@ -1,7 +1,7 @@
-import { PrismaService } from '@lib/shared';
+import { UserPrismaService } from '@lib/shared';
 import { Module, Provider } from '@nestjs/common';
 
-const services: Provider[] = [PrismaService];
+const services: Provider[] = [UserPrismaService];
 
 @Module({
   providers: [...services],
